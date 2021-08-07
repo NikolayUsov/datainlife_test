@@ -1,0 +1,39 @@
+@import '../../index.scss';
+
+.list {
+  @include reset-list;
+ 
+}
+
+.item {
+  color: $main-black;
+  border: 2px solid $main-black;
+
+
+  &:not(:nth-child(1)){
+    border-top: none;
+  }
+
+  :hover {
+    background-color: silver;
+  }
+
+  :active {
+    background-color: darken(silver, 30%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+  }
+}
+
+.item__active {
+  background-color: silver;
+
+  &:hover {
+    opacity: .7;
+  }
+}

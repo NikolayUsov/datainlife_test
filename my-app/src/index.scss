@@ -1,0 +1,17 @@
+@import './base-style/variables.scss';
+@import './base-style//mixin.scss';
+@import './base-style/global.scss';
+@import './base-style/font.scss';
+@import-normalize;
+
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal;
+  color: $main-black;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

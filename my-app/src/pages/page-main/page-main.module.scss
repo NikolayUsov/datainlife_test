@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+}
+
+.inner {
+  padding-top: 15px;
+  display: flex;
+}
+
+.sidebar {
+  width: 30%;
+  margin-right: 15px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.cart {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.cart__hidden {
+  display: none;
+}
