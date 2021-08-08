@@ -12,7 +12,7 @@
 
 ### Опубликованная версия
 
- [↗️ Vercel]().
+ [↗️ Vercel](https://datainlife-test-nvzq6e0un-nikolayusov.vercel.app/kol_ca_kruglogo_secheniya_o_ring).
 
 ### Установка зависимостей
 
