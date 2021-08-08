@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
@@ -20,11 +19,20 @@ export default function Navigation() {
       <li className={cn(styles.item, { [styles.item__active]: pathname === '/' })}>
         <Link onClick={() => handleLinkClick('/')} to="/">Все разделы</Link>
       </li>
-      {navigation.map((elem) => (
-        <li className={cn(styles.item, { [styles.item__active]: pathname === `/${elem.url}` })}>
-          <Link onClick={() => handleLinkClick(elem.url)} to={elem.url}>{elem.name}</Link>
-        </li>
-      ))}
+      {navigation.map((elem) => {
+        if (!elem.name) {
+          return (
+            <li key={elem.name} className={cn(styles.item, { [styles.item__active]: pathname === `/${elem.url}` })}>
+              <Link onClick={() => handleLinkClick(elem.url)} to={elem.url}>Остальной товар</Link>
+            </li>
+          );
+        }
+        return (
+          <li key={elem.name} className={cn(styles.item, { [styles.item__active]: pathname === `/${elem.url}` })}>
+            <Link onClick={() => handleLinkClick(elem.url)} to={elem.url}>{elem.name}</Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }

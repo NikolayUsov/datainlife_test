@@ -1,29 +1,24 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
 import styles from './cart.module.scss';
+import { selectPostStatus, selectOrderInfo } from '../../store/slices/features/data/selectors';
+import { RequestStatus } from '../../utils/const';
+import PropTypes from 'prop-types';
 
-const getOrderInfo = (orderObj) => {
-  const orderInfo = {
-    counter: 0,
-    sum: 0,
-  };
-  const arr = Object.values(orderObj);
-  arr.forEach((elem) => {
-    orderInfo.counter += elem.amount;
-    orderInfo.sum += elem.totallSum;
-  });
-
-  return orderInfo;
-};
-
-export default function Cart({ orderedOffers, handleSendOrder }) {
-  const orderInfo = getOrderInfo(orderedOffers);
+export default function Cart({ handleSendOrder }) {
+  const postStatus = useSelector(selectPostStatus);
+  const orderInfo = useSelector(selectOrderInfo);
   return (
     <div className={cn('wrapper', styles.cart)}>
       <p className={styles.information}>{`В корзине ${orderInfo.counter} товар на общую сумму ${orderInfo.sum}`}</p>
-      <a href="#" onClick={handleSendOrder} className={styles.buttonOrder}>Оформить заказ</a>
+      <a href="#" onClick={handleSendOrder} className={styles.buttonOrder}>
+        {postStatus === RequestStatus.LOADING ? 'Отправляю заказ' : 'Оформить заказ'}
+      </a>
     </div>
   );
 }
+
+Cart.propTypes = {
+  handleSendOrder: PropTypes.func.isRequired,
+};

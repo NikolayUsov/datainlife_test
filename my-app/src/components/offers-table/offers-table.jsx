@@ -1,7 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
@@ -42,7 +39,7 @@ export default function OffersTable({ handleAmountChange, orderedOffers }) {
               const amount = orderedOffers[gid]?.amount || 0;
               const totallSum = orderedOffers[gid]?.totallSum || 0;
               return (
-                <tr>
+                <tr key={gid}>
                   <td>{gid}</td>
                   <td>{gname}</td>
                   <td>{gprice}</td>

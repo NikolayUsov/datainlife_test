@@ -12,7 +12,6 @@ export const fetchData = async () => {
 export const postData = async (data) => {
   try {
     const responce = await axios.post('https://datainlife.ru/junior_task/add_basket.php', data);
-    console.log(responce);
     return responce.data;
   } catch (error) {
     throw new Error(error);
